@@ -69,7 +69,6 @@ export default class SinglyLinkedList {
         let current = this.head;
         while (current !== null) {
             if (current.data == data) {
-                console.log(current.data);
                 return current;
             }
             current = current.next;

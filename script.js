@@ -35,7 +35,7 @@ function resetGame() {
 //  ENEMIES - code for handling the list
 // **************************************
 
-// the list of enemies is an array of size 5 - but it could be larger ...
+// the list of enemies is now a SinglyLinkedList
 const enemies = new SinglyLinkedList();
 
 function createInitialEnemies() {
@@ -48,21 +48,20 @@ function createInitialEnemies() {
 // creates a new enemy object, and adds it to the list of enemies
 function spawnNewEnemy() {
     const enemy = createEnemy();
-    // TODO: need to add new enemy to list of enemies, here!
+    // Adds new enemy to the list
     enemies.add(enemy);
 }
 
 // removes an enemy object from the list of enemies
 function removeEnemy(enemy) {
-    // TODO: need to find enemy object in list of enemies, and remove it
+    // Removes enemy from list
     enemies.remove(enemy);
 }
 
 // returns the number of enemy objects in the list of enemies
 function numberOfEnemies() {
-    // TODO: need to return the number of actual enemies, not the size of the array
-    return enemies.length;
-    enemies.size();
+    // Returns the size of the list of enemies
+    return enemies.size();
 }
 
 // ************************************************
@@ -167,7 +166,6 @@ function loop() {
     // ****
     // Loop through all enemies - and move them until the reach the bottom
     // ****
-    // TODO: Only look at actual enemy objects from the list ...
     let node = enemies.getFirstNode();
     while (node != null) {
         const enemy = node.data;
@@ -202,7 +200,6 @@ function loop() {
     node = enemies.getFirstNode();
     while (node != null) {
         const enemy = node.data;
-        // TODO: Only do this for actual enemy objects from the list ...
         displayEnemy(enemy);
         node = enemies.getNextNode(node);
     }
