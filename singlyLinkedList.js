@@ -25,12 +25,16 @@ export default class SinglyLinkedList {
     // Der returnerer data i den første node i listen
     getFirst() {
         const node = this.getFirstNode();
-        return node.data;
+        // tjek om der er en node - hvis ikke returner null
+        return node ? node.data : null;
     }
 
     // Der returnerer data-objektet på det pågældende index i listen.
     getLast() {
         let current = this.head;
+        // hvis listen er tom returner null
+        if (!current) return null;
+
         while (current.next !== null) {
             current = current.next;
         }
@@ -44,16 +48,20 @@ export default class SinglyLinkedList {
 
     // Der returnerer noden efter denne (eller null, hvis der ikke er nogen)
     getNextNode(node) {
-        return node.next;
+        // hvis der ikke er nogen node returner null
+        return node ? node.next : null;
     }
 
     // Der returnerer den sidste node i listen
     getLastNode() {
         let current = this.head;
+        // hvis listen er tom returner null
+        if (!current) return null;
+
         while (current.next !== null) {
             current = current.next;
         }
-        return;
+        return current;
     }
 
     // Der returnerer den node der linker til dette data-objekt
@@ -66,15 +74,36 @@ export default class SinglyLinkedList {
             }
             current = current.next;
         }
+        // hvis der ikke er nogen node der linker til dette data-objekt returner null
+        return null;
     }
 
     // der fjerner den første node fra listen
     removeFirstNode() {
-        
+        if (this.head) {
+            this.head = this.head.next;
+        }
     }
 
     // Der fjerner den sidste node fra listen
-    removeLastNode() {}
+    removeLastNode() {
+        // hvis listen er tom returner null
+        if (!this.head) return;
+
+        if (!this.head.next) {
+            // hvis der kun er en node i listen
+            this.head = null;
+            return;
+        }
+
+        let current = this.head;
+        // hvis der er flere end én node i listen
+        while (current.next.next !== null) {
+            current = current.next;
+        }
+        // fjerner den sidste node
+        current.next = null;
+    }
 
     // Der fjerner dén node fra listen
     removeNode(node) {
@@ -97,13 +126,29 @@ export default class SinglyLinkedList {
     }
 
     // der fjerner alle nodes fra listen, og sørger for at den er tom
-    clear() {}
+    clear() {
+        this.head = null;
+    }
 
     // der returnerer antallet af nodes i listen
-    size() {}
+    size() {
+        let count = 0;
+        let current = this.head;
+        while (current !== null) {
+            count++;
+            current = current.next;
+        }
+        return count;
+    }
 
     // der console.log'er alle data-elementer i listen
-    dumpList() {}
+    dumpList() {
+        let current = this.head;
+        while (current !== null) {
+            console.log(current.data);
+            current = current.next;
+        }
+    }
 }
 
 class Node {
