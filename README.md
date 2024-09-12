@@ -2,4 +2,4 @@
 
 Link til [GitHub pages](https://markusingerslev.github.io/dsa-defender/)
 
-Link til [singly linked list algoritme](https://github.com/MarkusIngerslev/datastruktur-portfolio.git)
+Link til [singly linked list datastruktur](https://github.com/MarkusIngerslev/datastruktur-portfolio/tree/main/linkedList)
